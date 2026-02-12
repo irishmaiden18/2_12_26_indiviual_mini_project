@@ -30,11 +30,11 @@
 
 - DONE -- words are randomly selected each time and scrambled before they are displayed
 
-- users will be able to get word hints if a user takes a certain amount of time, maximum of 2 different hints, then a no more hints displays
+- DONE -- users will be able to get word hints if a user takes a certain amount of time, maximum of 2 different hints, then a no more hints displays
 
 - users can also get a hint by clicking a button on the main screen
 
-- a count down-timer is displayed counting down to the next hint
+- DONE -- a count down-timer is displayed counting down to the next hint
 
 - DONE -- words guessed are displayed below the guess area
 

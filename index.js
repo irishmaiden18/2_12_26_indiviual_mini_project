@@ -3,10 +3,13 @@
 //words to choose from
 const words = ["alpaca"]
 
+//creates an empty array to record words user has guessed
 let guessedWords = []
 
+let numberOfHintsGiven
+
 //lists the hints user has been given
-let hintsGiven = []
+let hintsArray = ["it is a land animal", "it is related to the llama"]
 
 //chosen word that user is trying to guess
 let chosenWord
@@ -16,7 +19,14 @@ let scrambledWord = []
 
 //word user guesses
 let guessedWord
-let guessesRemaining = 5
+
+//keeps track of the number of guesses the user has remaining
+let guessesRemaining
+
+//keeps track of the countdown timer until the next hint
+let timer
+
+let myTimer
 
 //shows spaces for each letter of currentWord being guessed
 const wordArea = document.querySelector("#word-area")
@@ -46,6 +56,9 @@ const guessedWordsList = document.querySelector("#guessed-words")
 //reset button
 const startAgainButtons = document.querySelectorAll(".restart-button")
 
+const hintPopUp = document.querySelector("#hint-modal")
+const hintGiven = document.querySelector("#hint")
+const closeHintButton= document.querySelector("#close-hint-button")
 
 const victoryPopUP = document.querySelector("#victory-modal")
 const victoryPopUpRestartButton = document.querySelector("#victory-modal button")
@@ -95,6 +108,12 @@ function initializeNewGame() {
     
     //updates the guesses remaining display counter
     guessesRemainingSpan.textContent = guessesRemaining
+
+    numberOfHintsGiven = 0
+
+    timer = 5
+
+    startCountdown()
 }
 
 //gets a random word from our list of random words
@@ -108,7 +127,7 @@ function shuffleLetters(word) {
     //turn the word into an array
     let scrambledWordArray = Array.from(word)
     //create a for loop to go over all the indexes of the new array
-    for (let originalIndex = 0; originalIndex < scrambledWordArray.length - 1; originalIndex++) {
+    for (let originalIndex = 0; originalIndex < scrambledWordArray.length; originalIndex++) {
         //find a new random index for the letter swap
         let newIndex = Math.floor(Math.random() * scrambledWordArray.length)
         //swap the letters
@@ -119,8 +138,9 @@ function shuffleLetters(word) {
     //return a string of the scrambled word
     return scrambledWordArray.join(" ")
 }
+//Word Scramble Algorithm came from: https://www.geeksforgeeks.org/javascript/word-scramble-game-using-javascript/
 
-//build word area
+//builds word area
 function buildWordArea(word) {
     chosenWordArray = word.split("")
     chosenWordArray.forEach(letter => {
@@ -135,10 +155,7 @@ function buildWordArea(word) {
     })
 }
 
-//add eventListener to guessWordButton and call the check word function
-guessWordButton.addEventListener("click", checkWord)
-
-//check guessed word
+//checks guessed word
 function checkWord() {
     //grab guessed word input and change it to lower case
     guessedWord = guessedWordInputField.value.toLowerCase()
@@ -196,13 +213,13 @@ function updateGuessedWordsArea() {
     }) 
 }
 
-//clears GuessedWords List
+//clears guessedWordsList
 function clearGuessedWordsList() {
     const guestWordsLi = document.querySelectorAll("#guessed-words li")
     guestWordsLi.forEach(li => li.remove())
 }
 
-//clears word area of underscores
+//clears word area
 function clearWordArea() {
     const wordAreaSpans = document.querySelectorAll("#word-area span")
     wordAreaSpans.forEach(span => span.remove())
@@ -216,24 +233,92 @@ function clearGuessedWordField() {
 
 
 
+//Timer//
+
+//calls a function every second and sets our intial timer value
+function startCountdown() {
+    //calls a countdownTimer every second
+    myTimer = setInterval(countdownTimer, 1000)
+    //initializes our timer to 5 seconds
+    timer = 5
+}
+
+//controls the in-page timer and what hints are given and when they are given
+function countdownTimer() {
+    //decrements our timer
+    timer = timer - 1
+    //if the timer is still counting down and we havent already given all the hints
+    if((timer >= 0) && (numberOfHintsGiven <=1)) {
+        //change the timer text on the page to the current value of timer
+        hintsTimer.textContent = `${timer} seconds`
+    //if the timer is not counting down or we have given all our hints    
+    } else {
+        //stop the timer
+        clearInterval(myTimer)
+        //if we haven't given all our hints
+        if(numberOfHintsGiven <=1) {
+            //display the hint
+            let hintText = getHint()
+            hintGiven.textContent = hintText
+            hintPopUp.style.display = "block"
+        //if we have given all out hints, 
+        } else {
+            //change the timer text to "No more hints available"
+            hintsTimer.textContent = "No more hints available"
+        }
+    }
+}
+
+//increments the numberOfHintsGiven and gets the hint from the hintsArray
+function getHint() {
+    numberOfHintsGiven += 1
+        //return a hint
+    return hintsArray[numberOfHintsGiven -1]
+}
+
+//closes the hint pop up
+function closeHintPopUp() {
+    hintPopUp.style.display = "none"
+}
+
+
+
+
+
 //Event Listeners//
 
+//add eventListener to victoryPopUpRestartButton and call the initializeNewGame function
 victoryPopUpRestartButton.addEventListener("click", initializeNewGame)
 
+//add eventListener to loserPopUpRestartButton and call the initializeNewGame function
 loserPopUpRestartButton.addEventListener("click", initializeNewGame)
 
+//add eventListener to newWordButton and call the initializeNewGame function
 newWordButton.addEventListener("click", initializeNewGame)
 
+//add eventListener to rescrambleWordButton and call two functions,
 rescrambleWordButton.addEventListener("click", function() {
+    //create a temporary word to hold our newly shuffled word
     let tempWord = shuffleLetters(scrambledWord)
+    //call clearWordArea
     clearWordArea()
+    //call buildWordArea using our temporary word
     buildWordArea(tempWord)
 })
     
+//add eventListener to guessWordButton and call the check word function
+guessWordButton.addEventListener("click", checkWord)
+
+//add eventListener to closeHintButton and call two functions,
+closeHintButton.addEventListener("click", function() {
+    //hide the hint pop up
+    closeHintPopUp()
+    //start the hint timer
+    startCountdown()
+})
 
 
 
 initializeNewGame()
 
 
-//Word Scramble Algorithm: https://www.geeksforgeeks.org/javascript/word-scramble-game-using-javascript/
