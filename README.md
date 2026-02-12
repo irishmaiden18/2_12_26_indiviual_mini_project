@@ -18,17 +18,17 @@
 
 ## User Stories -- Word Scramble (animals)
 
-- user will be able to guess a word by entering into an input field and then clicking a submit button
+- DONE -- user will be able to guess a word by entering into an input field and then clicking a submit button
 
-- if the user guesses the right word they will get a victory screen
+- DONE -- if the user guesses the right word they will get a victory screen
 
-- if the user uses up all their guesses and doesn't guess the word they will get a losing screen
+- DONE -- if the user uses up all their guesses and doesn't guess the word they will get a losing screen
 
-- if the user guesses wrong and still has guesses left, the input field will clear
+- DONE -- if the user guesses wrong and still has guesses left, the input field will clear
 
-- users will be able to restart the game with a button on the main page, the victory screen and the loosing screen
+- DONE -- users will be able to restart the game with a button on the main page, the victory screen and the loosing screen
 
-- words are randomly selected each time and scrambled before they are displayed
+- DONE -- words are randomly selected each time and scrambled before they are displayed
 
 - users will be able to get word hints if a user takes a certain amount of time, maximum of 2 different hints, then a no more hints displays
 
@@ -36,11 +36,11 @@
 
 - a count down-timer is displayed counting down to the next hint
 
-- words guessed are displayed below the guess area
+- DONE -- words guessed are displayed below the guess area
 
-- user can re-scramble the letters differently by pushing a button on the main screen
+- DONE -- user can re-scramble the letters differently by pushing a button on the main screen
 
-- user can see the number of guesses they have remaining
+- DONE -- user can see the number of guesses they have remaining
 
 ### Bonus Stories
 

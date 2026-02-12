@@ -16,3 +16,11 @@
     position: fixed;
     display: none
 }
+
+#vicotry-modal {
+    background-color: green;
+}
+
+#defeat-model {
+    background-color: red;
+}
