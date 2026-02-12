@@ -11,16 +11,53 @@
 <body>
     <!--Game Area-->
     <div id="game-area">
-        <h1>Word Scramble</h1>
+        <h1>Animal Word Scramble</h1>
+
+        <div id="word-area"></div>
+        
+        <div id="guessing-area">
+            <label for="guessed-word">Guess A Word:</label>
+            <input type="text" id="guessed-word">
+            <button id="guess-word-button">Guess Word</button>
+        
+            <p>Guesses Remaining: <span id="guesses-remaining-span"></span></p>
+            <button id="rescramble-button">Rescramble Word</button>
+            <button id="restart-button">Get A New Word</button>
+        </div>
+
+        <div id="hints-area">
+            <h2>Hints Given</h2>
+
+            <ol id="hints-given"></ol>
+
+            <p>Time To Next Hint: <span id="hint-timer"></span></p>
+            
+            <button id="get-a-hint-button">Get A Hint</button>
+        </div>
+
+        <div id="guessed-words-area">
+            <h2>Guessed Words</h2>
+
+            <ul id="guessed-words"></ul>
+
+        </div>
     </div>
 
     <!--Victory Modal-->
-    <div id="vicotry-modal">
+    <div id="vicotry-modal" class="modal">
+
+        <h2>You Got It! Good Job!</h2>
+
+        <button class="restart-button">Play Again?</button>
 
     </div>
 
     <!--Defeat Model-->
-    <div id="defeat-model">
+    <div id="defeat-model" class="modal">
+
+        <h2>You Lose.</h2>
+
+        <button class="restart-button">Try Again?</button>
         
     </div>
 </body>

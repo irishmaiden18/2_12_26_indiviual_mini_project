@@ -1,0 +1,18 @@
+#word-area {
+    font-size: 40px;
+    padding: 15px;
+}
+
+.modal {
+    border: solid black 3px;
+    border-radius: 20px;
+    padding: 1rem;
+    font-size: 20px;
+    text-align: center;
+    width: 50%;
+    margin: auto;
+    left: 25vw;
+    top: 40vh;
+    position: fixed;
+    display: none
+}
