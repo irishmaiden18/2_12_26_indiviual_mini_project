@@ -44,7 +44,7 @@
 
 ### Bonus Stories
 
-- user can give up and get a new word by clicking a button on the main screen, 
+- DONE -- user can give up and get a new word by clicking a button on the main screen, 
 
 - a picture of the animal will pop up when the word is guessed
 
