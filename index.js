@@ -1,15 +1,16 @@
 //Variables//
 
 //words to choose from
-const words = ["alpaca"]
+// const words = ["alpaca"]
 
 //creates an empty array to record words user has guessed
 let guessedWords = []
 
+//keeps track of how many hints have been given
 let numberOfHintsGiven
 
-//lists the hints user has been given
-let hintsArray = ["it is a land animal", "it is related to the llama"]
+//lists the hints user can get
+let hintsArray
 
 //chosen word that user is trying to guess
 let chosenWord
@@ -23,23 +24,28 @@ let guessedWord
 //keeps track of the number of guesses the user has remaining
 let guessesRemaining
 
-//keeps track of the countdown timer until the next hint
+//keeps track of the countdown timer value until the next hint
 let timer
 
+//calls a function every second using setInterval
 let myTimer
 
 //shows spaces for each letter of currentWord being guessed
 const wordArea = document.querySelector("#word-area")
 
+//the field where the user enters their word guess
 const guessedWordInputField = document.querySelector("#guessed-word")
 
+//the submit button for a guessed word
 const guessWordButton = document.querySelector("#guess-word-button")
 
 //displays user's remaining guesses
 const guessesRemainingSpan = document.querySelector("#guesses-remaining-span")
 
+//re-scrambles the word
 const rescrambleWordButton = document.querySelector("#rescramble-button")
 
+//gives a new word to guess
 const newWordButton = document.querySelector("#restart-button")
 
 //list hints will be added to as they are given
@@ -48,6 +54,7 @@ const hintsGivenList = document.querySelector("#hints-given")
 //countdown timer until next hint is automatically shown
 const hintsTimer = document.querySelector("#hint-timer")
 
+//button to get a hint
 const getHintButton = document.querySelector("#get-a-hint-button")
 
 //list guessed words will be added to as they are guessed
@@ -56,14 +63,16 @@ const guessedWordsList = document.querySelector("#guessed-words")
 //reset button
 const startAgainButtons = document.querySelectorAll(".restart-button")
 
+//hint popUp parts
 const hintPopUp = document.querySelector("#hint-modal")
 const hintGiven = document.querySelector("#hint")
 const closeHintButton= document.querySelector("#close-hint-button")
 
+//victory popup parts
 const victoryPopUP = document.querySelector("#victory-modal")
 const victoryPopUpRestartButton = document.querySelector("#victory-modal button")
 
-
+//loser popup parts
 const loserPopUp = document.querySelector("#defeat-modal")
 const loserPopUpRestartButton = document.querySelector("#defeat-modal button")
 const correctAnswer = document.querySelector("#correct-answer")
@@ -109,17 +118,20 @@ function initializeNewGame() {
     //updates the guesses remaining display counter
     guessesRemainingSpan.textContent = guessesRemaining
 
+    //resets numberOfHintsGiven to zero
     numberOfHintsGiven = 0
 
+    //sets timer to its start value
     timer = 5
 
+    //starts countdown timer
     startCountdown()
 }
 
 //gets a random word from our list of random words
 function getRandomWord() {
     const randomIndex = Math.floor(Math.random() * words.length)
-    return words[randomIndex]
+    return words[randomIndex].name
 }
 
 //shuffles the letters of our chosen word
@@ -255,25 +267,36 @@ function countdownTimer() {
     } else {
         //stop the timer
         clearInterval(myTimer)
-        //if we haven't given all our hints
-        if(numberOfHintsGiven <=1) {
-            //display the hint
-            let hintText = getHint()
-            hintGiven.textContent = hintText
-            hintPopUp.style.display = "block"
-        //if we have given all out hints, 
-        } else {
-            //change the timer text to "No more hints available"
-            hintsTimer.textContent = "No more hints available"
-        }
+        //handle hint request
+        handleHintRequest()
+    }
+}
+
+function handleHintRequest() {
+    //if we haven't given all our hints
+    if(numberOfHintsGiven <=1) {
+        //display the hint
+        let hintText = getHint()
+        hintGiven.textContent = hintText
+        hintPopUp.style.display = "block"
+    //if we have given all out hints, 
+    } else {
+        //change the timer text to "No more hints available"
+        hintsTimer.textContent = "No more hints available"
     }
 }
 
 //increments the numberOfHintsGiven and gets the hint from the hintsArray
 function getHint() {
     numberOfHintsGiven += 1
-        //return a hint
-    return hintsArray[numberOfHintsGiven -1]
+    //return a hint
+    const result = words.find(animal => animal.name === chosenWord)
+    const tempIndex = numberOfHintsGiven-1
+    
+    return result.tempIndex
+    
+    
+    // hintsArray[numberOfHintsGiven -1]
 }
 
 //closes the hint pop up
@@ -293,8 +316,13 @@ victoryPopUpRestartButton.addEventListener("click", initializeNewGame)
 //add eventListener to loserPopUpRestartButton and call the initializeNewGame function
 loserPopUpRestartButton.addEventListener("click", initializeNewGame)
 
-//add eventListener to newWordButton and call the initializeNewGame function
-newWordButton.addEventListener("click", initializeNewGame)
+//add eventListener to newWordButton and call two functions,
+newWordButton.addEventListener("click", function () {
+    //stop the hint timer
+    clearInterval(myTimer)
+    //intialize a new game
+    initializeNewGame()
+})
 
 //add eventListener to rescrambleWordButton and call two functions,
 rescrambleWordButton.addEventListener("click", function() {
@@ -307,7 +335,17 @@ rescrambleWordButton.addEventListener("click", function() {
 })
     
 //add eventListener to guessWordButton and call the check word function
-guessWordButton.addEventListener("click", checkWord)
+guessWordButton.addEventListener("click", function() {
+    //see if the word is correct
+    checkWord()
+    //stop the hint timer
+    clearInterval(myTimer)
+    //if the guessed word is incorrect
+    if (!(guessedWord === chosenWord)) {
+        //start hint countdown timer
+        startCountdown()
+    }
+})
 
 //add eventListener to closeHintButton and call two functions,
 closeHintButton.addEventListener("click", function() {
@@ -317,8 +355,18 @@ closeHintButton.addEventListener("click", function() {
     startCountdown()
 })
 
+//add eventListener to getHintButton and call two functions,
+getHintButton.addEventListener("click", function() {
+    //get a hint if there is one remaining
+    handleHintRequest()
+    //stop the hint timer
+    clearInterval(myTimer)
+})
 
 
+
+
+//start a new game on load
 initializeNewGame()
 
 
