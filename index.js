@@ -289,14 +289,12 @@ function handleHintRequest() {
 //increments the numberOfHintsGiven and gets the hint from the hintsArray
 function getHint() {
     numberOfHintsGiven += 1
-    //return a hint
+    //find the animal that matches our current chosenWord
     const result = words.find(animal => animal.name === chosenWord)
-    const tempIndex = numberOfHintsGiven-1
-    
-    return result.tempIndex
-    
-    
-    // hintsArray[numberOfHintsGiven -1]
+    //construct a string to match the attribute name for the appropriate hint
+    const tempString = `hint${numberOfHintsGiven}`
+    //return appropriate hint
+    return result[tempString]
 }
 
 //closes the hint pop up

@@ -32,7 +32,7 @@
 
 - DONE -- users will be able to get word hints if a user takes a certain amount of time, maximum of 2 different hints, then a no more hints displays
 
-- users can also get a hint by clicking a button on the main screen
+- DONE -- users can also get a hint by clicking a button on the main screen
 
 - DONE -- a count down-timer is displayed counting down to the next hint
 
@@ -44,4 +44,10 @@
 
 ### Bonus Stories
 
-- user can give up and get a new word by clicking a button on the main screen, word will not be the same word they started with
+- user can give up and get a new word by clicking a button on the main screen, 
+
+- a picture of the animal will pop up when the word is guessed
+
+- there will be a score that records how many words you have gotten right
+
+- user can add animals to the list to chose from

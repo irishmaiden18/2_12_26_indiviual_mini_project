@@ -3,30 +3,30 @@ const words = [
     {
         name: "alpaca",
         hint1: "it is a land animal",
-        2: "it is related to the llama"
+        hint2: "it is related to the llama"
     },
 
     {
         name: "shark",
         hint1: "it swims in the ocean",
-        2: "it is a predator"
+        hint2: "it is a predator"
     },
 
     {
         name: "cat",
         hint1: "we keep it as a pet",
-        2: "it is known for being independent"
+        hint2: "it is known for being independent"
     },
 
     {
         name: "dog",
         hint1: "we keep it as a pet",
-        2: "it is very loyal"
+        hint2: "it is very loyal"
     },
 
     {
         name: "whale",
         hint1: "it swims in the ocean",
-        2: "it is typically very large"
+        hint2: "it is typically very large"
     }
 ]
