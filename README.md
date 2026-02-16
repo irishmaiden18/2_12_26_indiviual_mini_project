@@ -1,5 +1,11 @@
 # JS Mini Project -- Animal Word Scramble
 
+Link to site: https://irishmaiden18.github.io/ground_up_website/
+
+![desktop website view](https://github.com/irishmaiden18/ground_up_website/blob/main/ground_up_desktop_image.jpg)
+
+![mobile website view](https://github.com/irishmaiden18/ground_up_website/blob/main/ground_up_mobile_image.jpg)
+
 ## Mini Project -- Requirements
 
 1. Build user stories ("a user will be able to...")
@@ -65,11 +71,3 @@
 - there will be a score that records how many words you have gotten right
 
 - user can add animals to the list to chose from
-
-
-
-Link to site: https://irishmaiden18.github.io/ground_up_website/
-
-![desktop website view](https://github.com/irishmaiden18/ground_up_website/blob/main/ground_up_desktop_image.jpg)
-
-![mobile website view](https://github.com/irishmaiden18/ground_up_website/blob/main/ground_up_mobile_image.jpg)
