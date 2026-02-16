@@ -31,7 +31,7 @@
 
             <ol id="hints-given"></ol>
 
-            <p>Time To Next Hint: <span id="hint-timer"></span></p>
+            <p><span id="time-to-next-hint">Time To Next Hint: </span><span id="hint-timer"></span></p>
             
             <button id="get-a-hint-button">Get A Hint</button>
         </div>
@@ -59,6 +59,12 @@
     <div id="victory-modal" class="modal">
 
         <h2>You Got It! Good Job!</h2>
+
+        <h3>It was a: <span id="correct-animal"></span></h3>
+
+        <img id="correct-animal-image">
+
+        <br>
 
         <button class="restart-button">Play Again?</button>
 

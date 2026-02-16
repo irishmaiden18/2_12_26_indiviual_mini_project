@@ -21,6 +21,9 @@ let scrambledWord = []
 //word user guesses
 let guessedWord
 
+//last word played
+let lastPlayedWord
+
 //keeps track of the number of guesses the user has remaining
 let guessesRemaining
 
@@ -71,6 +74,8 @@ const closeHintButton= document.querySelector("#close-hint-button")
 //victory popup parts
 const victoryPopUP = document.querySelector("#victory-modal")
 const victoryPopUpRestartButton = document.querySelector("#victory-modal button")
+const correctAnimal = document.querySelector("#correct-animal")
+const correctAnimalImg = document.querySelector("#correct-animal-image")
 
 //loser popup parts
 const loserPopUp = document.querySelector("#defeat-modal")
@@ -85,6 +90,9 @@ const correctAnswer = document.querySelector("#correct-answer")
 
 //starts a new game
 function initializeNewGame() {
+    //hides the hint popup if its open
+    closeHintPopUp()
+
     //hides the victory popup if the user just won
     victoryPopUP.style.display = "none"
 
@@ -103,11 +111,26 @@ function initializeNewGame() {
     //clears guessed words list
     clearGuessedWordsList()
 
+    //clears hints given list
+    clearHintsGivenList()
+
     //sets chosenWord to a new random word
     chosenWord = getRandomWord()
 
+    // set the chosen word to all lower case
+    chosenWordLowerCase = chosenWord.toLowerCase()
+
+    //if this chosen word is the same as last game, get a new random word
+    if (chosenWordLowerCase == lastPlayedWord) {
+        chosenWord = getRandomWord()
+        chosenWordLowerCase = chosenWord.toLowerCase()
+    }
+
+    //set lastPlayed word to our new chosen word lower cased
+    lastPlayedWord = chosenWordLowerCase
+
     //scrambles chosenWord
-    scrambledWord = shuffleLetters(chosenWord)
+    scrambledWord = shuffleLetters(chosenWordLowerCase)
 
     //builds the word area based on the new chosen word
     buildWordArea(scrambledWord)
@@ -167,19 +190,36 @@ function buildWordArea(word) {
     })
 }
 
+//designs victory popup
+function makeVictoryPopUp() {
+
+    //set correctAnimal to chosenWord
+    correctAnimal.textContent = chosenWord
+
+    //find correct object in our words array
+    const result = words.find(animal => animal.name === chosenWord)
+
+    //set image properties to appropriate image
+    correctAnimalImg.src = result.img
+
+    //display victory screen
+    victoryPopUP.style.display = "block"
+}
+
+
 //checks guessed word
 function checkWord() {
     //grab guessed word input and change it to lower case
     guessedWord = guessedWordInputField.value.toLowerCase()
     //check whether the guessed word is the same as the current word
     //if it is the same
-    if (guessedWord === chosenWord) {
+    if (guessedWord === chosenWordLowerCase) {
         //display victory screen
-        victoryPopUP.style.display = "block"
+        makeVictoryPopUp()
     //if it isn't
     } else {
         //if guesses remaining is greater than zero
-        if (guessesRemaining > 0) {
+        if (guessesRemaining > 1) {
             //if the word guessed is already in our guessed words
             if (guessedWords.includes(guessedWord)) {
                 //end the function
@@ -242,10 +282,16 @@ function clearGuessedWordField() {
     guessedWordInputField.value = ""
 }
 
+//clears hintsList
+function clearHintsGivenList() {
+    const hintGivenLi = document.querySelectorAll("#hints-given li")
+    hintGivenLi.forEach(li => li.remove())
+}
 
 
 
-//Timer//
+
+//Timer & Hint Functionality//
 
 //calls a function every second and sets our intial timer value
 function startCountdown() {
@@ -277,6 +323,11 @@ function handleHintRequest() {
     if(numberOfHintsGiven <=1) {
         //display the hint
         let hintText = getHint()
+
+        const newLi = document.createElement("li")
+        newLi.textContent = hintText
+        hintsGivenList.append(newLi)
+
         hintGiven.textContent = hintText
         hintPopUp.style.display = "block"
     //if we have given all out hints, 
@@ -308,14 +359,24 @@ function closeHintPopUp() {
 
 //Event Listeners//
 
-//add eventListener to victoryPopUpRestartButton and call the initializeNewGame function
-victoryPopUpRestartButton.addEventListener("click", initializeNewGame)
+//add eventListener to victoryPopUpRestartButton and call two functions
+victoryPopUpRestartButton.addEventListener("click", function() {
+    //stop the hint timer
+    clearInterval(myTimer)
+    //intialize a new game
+    initializeNewGame()
+})
 
-//add eventListener to loserPopUpRestartButton and call the initializeNewGame function
-loserPopUpRestartButton.addEventListener("click", initializeNewGame)
+//add eventListener to loserPopUpRestartButton and call two functions
+loserPopUpRestartButton.addEventListener("click", function() {
+    //stop the hint timer
+    clearInterval(myTimer)
+    //intialize a new game
+    initializeNewGame()
+})
 
 //add eventListener to newWordButton and call two functions,
-newWordButton.addEventListener("click", function () {
+newWordButton.addEventListener("click", function() {
     //stop the hint timer
     clearInterval(myTimer)
     //intialize a new game

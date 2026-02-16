@@ -42,11 +42,25 @@
 
 - DONE -- user can see the number of guesses they have remaining
 
+- DONE -- hints will clear when user clicks "new word"
+
+- DONE -- guessed word list will show up on all screens with a scroll bar if necessary
+
+- DONE padding around game area will be responsive
+
+- DONE -- users will lose when 0 guesses remain
+
+- DONE -- there will be a radial gradient background on the html behind the game area
+
+- DONE -- when a new game starts you won't get the same word
+
+- DONE -- will have responsive styling
+
 ### Bonus Stories
 
 - DONE -- user can give up and get a new word by clicking a button on the main screen, 
 
-- a picture of the animal will pop up when the word is guessed
+- DONE -- a picture of the animal will pop up when the word is guessed
 
 - there will be a score that records how many words you have gotten right
 

@@ -1,6 +1,47 @@
+html {
+    background: #2A7B9B;
+    background: radial-gradient(circle, rgba(237, 221, 83, 1) 0%, rgba(87, 199, 133, 1) 50%, rgba(42, 123, 155, 1) 100%);
+}
+
+#game-area {
+    border: solid black 3px;
+    border-radius: 20px;
+    padding: 1rem;
+    width: 30%;
+    margin: auto;
+    margin-top: 7%;
+    background-color: white;
+}
+
+#game-area h1 {
+    text-align: center
+}
+
 #word-area {
     font-size: 40px;
     padding: 15px;
+    text-align: center;
+}
+
+#guessing-area{
+    text-align: center;
+}
+
+#guessing-area label {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+#time-to-next-hint {
+    font-weight: bold;
+}
+
+button {
+    border-color: #50C878;
+    border-radius: 10px;
+    padding: 5px 15px;
+    background-color: #50C878;
+    /* color: white; */
 }
 
 .modal {
@@ -12,15 +53,54 @@
     width: 50%;
     margin: auto;
     left: 25vw;
-    top: 40vh;
+    top: 35vh;
     position: fixed;
     display: none
 }
 
-#vicotry-modal {
-    background-color: green;
+#hint-modal {
+    background-color: white;
 }
 
-#defeat-model {
+#victory-modal {
+    background-color: #50C878;;
+    width: 40%;
+    top: 20vh;
+    left: 30vw;
+}
+
+#victory-modal button {
+    background-color: white;
+}
+
+#correct-animal-image {
+    max-height: 30vh;
+    max-width: 100%;
+}
+
+#defeat-modal {
     background-color: red;
+}
+
+#defeat-modal button {
+    background-color: blaCK;
+    color: white;
+}
+
+@media (max-Width: 500px) {
+    #game-area {
+        width: 90%;
+    }
+
+    #guess-word-button {
+        margin-top: 10px;
+    }
+
+    .modal {
+        left: 20vw;
+    }
+
+    #victory-modal {
+        left: 25vw;
+    }
 }
