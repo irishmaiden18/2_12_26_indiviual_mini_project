@@ -297,8 +297,8 @@ function clearHintsGivenList() {
 function startCountdown() {
     //calls a countdownTimer every second
     myTimer = setInterval(countdownTimer, 1000)
-    //initializes our timer to 5 seconds
-    timer = 5
+    //initializes our timer to 30 seconds
+    timer = 30
 }
 
 //controls the in-page timer and what hints are given and when they are given
