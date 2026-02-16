@@ -2,9 +2,9 @@
 
 Link to site: https://irishmaiden18.github.io/ground_up_website/
 
-![desktop website view](https://github.com/irishmaiden18/2_12_26_indiviual_mini_project/blob/main/sample_game_image.jpg)
+![desktop website view] (https://github.com/irishmaiden18/2_12_26_indiviual_mini_project/blob/main/sample_game_image.jpg)
 
-![mobile website view](https://github.com/irishmaiden18/ground_up_website/blob/main/ground_up_mobile_image.jpg)
+![mobile website view](https://github.com/irishmaiden18/2_12_26_indiviual_mini_project/blob/main/sample_game_image_mobile.jpg)
 
 ## Mini Project -- Requirements
 
