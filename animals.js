@@ -33,5 +33,40 @@ const words = [
         hint1: "It swims in the ocean",
         hint2: "It is typically very large",
         img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTK7F6lpf0gR1jRKI3dK9ll4gcGZjYWahRB9YEKAQkT0K-qwv5FkkztV0c&s"
+    },
+
+    {
+        name: "Fish",
+        hint1: "It swims in the ocean",
+        hint2: "It has gills",
+        img: "https://images.stockcake.com/public/1/9/4/194f4315-a8d9-422b-b237-18b1e224b7a1_large/colorful-tropical-fish-stockcake.jpg"
+    },
+    
+    {
+        name: "Zebra",
+        hint1: "It lives in Africa",
+        hint2: "It has stripes",
+        img: "https://upload.wikimedia.org/wikipedia/commons/9/96/Plains_Zebra_Equus_quagga_cropped.jpg"
+    },
+
+    {
+        name: "Bonobo",
+        hint1: "It lives in Africa",
+        hint2: "It is closely related to the chimpanze",
+        img: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Apeldoorn_Apenheul_zoo_Bonobo.jpg/960px-Apeldoorn_Apenheul_zoo_Bonobo.jpg"
+    },
+
+    {
+        name: "Horse",
+        hint1: "It walks on four legs",
+        hint2: "It parnered humans for centuries",
+        img: "https://upload.wikimedia.org/wikipedia/commons/d/de/Nokota_Horses_cropped.jpg"
+    },
+
+    {
+        name: "Budgie",
+        hint1: "We keep it as a pet",
+        hint2: "It flies",
+        img: "https://avonturia.nl/wp-content/uploads/2024/05/Grasparkiet-Grasparkieten-Parkieten-Soorten-parkietensoorten-kleine-parkiet-Melopsittacus-undulatus-populair-1-1024x1024.jpg"
     }
 ]

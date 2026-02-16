@@ -145,7 +145,7 @@ function initializeNewGame() {
     numberOfHintsGiven = 0
 
     //sets timer to its start value
-    timer = 5
+    timer = 30
 
     //starts countdown timer
     startCountdown()
