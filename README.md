@@ -1,4 +1,4 @@
-# JS Example Project
+# JS Mini Project -- Animal Word Scramble
 
 ## Mini Project -- Requirements
 
@@ -16,7 +16,7 @@
 
 5. Have fun!
 
-## User Stories -- Word Scramble (animals)
+## Required User Stories
 
 - DONE -- user will be able to guess a word by entering into an input field and then clicking a submit button
 
@@ -56,7 +56,7 @@
 
 - DONE -- will have responsive styling
 
-### Bonus Stories
+### Bonus User Stories
 
 - DONE -- user can give up and get a new word by clicking a button on the main screen, 
 
@@ -65,3 +65,11 @@
 - there will be a score that records how many words you have gotten right
 
 - user can add animals to the list to chose from
+
+
+
+Link to site: https://irishmaiden18.github.io/ground_up_website/
+
+![desktop website view](https://github.com/irishmaiden18/ground_up_website/blob/main/ground_up_desktop_image.jpg)
+
+![mobile website view](https://github.com/irishmaiden18/ground_up_website/blob/main/ground_up_mobile_image.jpg)
