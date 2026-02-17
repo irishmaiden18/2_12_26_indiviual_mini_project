@@ -1,0 +1,51 @@
+# User Stories
+
+## Required
+
+- DONE -- user will be able to guess a word by entering into an input field and then clicking a submit button
+
+- DONE -- if the user guesses the right word they will get a victory screen
+
+- DONE -- if the user uses up all their guesses and doesn't guess the word they will get a losing screen
+
+- DONE -- if the user guesses wrong and still has guesses left, the input field will clear
+
+- DONE -- users will be able to restart the game with a button on the main page, the victory screen and the loosing screen
+
+- DONE -- words are randomly selected each time and scrambled before they are displayed
+
+- DONE -- users will be able to get word hints if a user takes a certain amount of time, maximum of 2 different hints, then a no more hints displays
+
+- DONE -- users can also get a hint by clicking a button on the main screen
+
+- DONE -- a count down-timer is displayed counting down to the next hint
+
+- DONE -- words guessed are displayed below the guess area
+
+- DONE -- user can re-scramble the letters differently by pushing a button on the main screen
+
+- DONE -- user can see the number of guesses they have remaining
+
+- DONE -- hints will clear when user clicks "new word"
+
+- DONE -- guessed word list will show up on all screens with a scroll bar if necessary
+
+- DONE padding around game area will be responsive
+
+- DONE -- users will lose when 0 guesses remain
+
+- DONE -- there will be a radial gradient background on the html behind the game area
+
+- DONE -- when a new game starts you won't get the same word
+
+- DONE -- will have responsive styling
+
+## Bonus
+
+- DONE -- user can give up and get a new word by clicking a button on the main screen, 
+
+- DONE -- a picture of the animal will pop up when the word is guessed
+
+- there will be a score that records how many words you have gotten right
+
+- user can add animals to the list to chose from
