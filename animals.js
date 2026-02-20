@@ -68,5 +68,40 @@ const words = [
         hint1: "We keep it as a pet",
         hint2: "It flies",
         img: "https://avonturia.nl/wp-content/uploads/2024/05/Grasparkiet-Grasparkieten-Parkieten-Soorten-parkietensoorten-kleine-parkiet-Melopsittacus-undulatus-populair-1-1024x1024.jpg"
+    },
+
+    {
+        name: "Raccoon",
+        hint1: "It is a mammal",
+        hint2: "It has a face that looks like it is wearing a mask",
+        img: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Raccoon_in_Central_Park_%2835264%29.jpg/250px-Raccoon_in_Central_Park_%2835264%29.jpg"
+    },
+
+    {
+        name: "Lion",
+        hint1: "It is a carnivore",
+        hint2: "It lives in Africa",
+        img: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Lion_%28Panthera_leo%29_male_6y.jpg/500px-Lion_%28Panthera_leo%29_male_6y.jpg"
+    },
+    
+    {
+        name: "Koala",
+        hint1: "It lives in Australia",
+        hint2: "They primarily eat eucalyptus leavs",
+        img: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Koala_climbing_tree.jpg/330px-Koala_climbing_tree.jpg"
+    },
+
+    {
+        name: "Bat",
+        hint1: "It flies",
+        hint2: "It is a mammal",
+        img: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Big-eared-townsend-fledermaus.jpg/250px-Big-eared-townsend-fledermaus.jpg"
+    },
+
+    {
+        name: "Turtle",
+        hint1: "It is a reptile",
+        hint2: "It lives on land and in the ocean",
+        img: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Turtle_diversity.jpg/1280px-Turtle_diversity.jpg"
     }
 ]
