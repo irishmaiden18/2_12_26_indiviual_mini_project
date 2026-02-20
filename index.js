@@ -132,6 +132,11 @@ function initializeNewGame() {
     //scrambles chosenWord
     scrambledWord = shuffleLetters(chosenWordLowerCase)
 
+    //if scrambled word is the word itself, rescramble the word
+    if (chosenWordLowerCase == scrambledWord) {
+        scrambledWord = shuffleLetters(chosenWordLowerCase)
+    }
+
     //builds the word area based on the new chosen word
     buildWordArea(scrambledWord)
 
