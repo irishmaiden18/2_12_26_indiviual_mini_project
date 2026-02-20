@@ -1,6 +1,6 @@
 # JS Mini Project -- Animal Word Scramble
 
-Created user stories for a responsive animal based word scramble game that I then implemented using HTML, CSS & Javascript.
+Created user stories for a responsive animal based word scramble game that I then implemented using HTML, CSS & JavaScript.
 
 Link to site: https://irishmaiden18.github.io/Animal-Word-Scramble-Game/
 
