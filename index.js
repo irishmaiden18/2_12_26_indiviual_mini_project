@@ -6,6 +6,9 @@
 //creates an empty array to record words user has guessed
 let guessedWords = []
 
+// creats an empty array to fill with the list of animals randomized
+let randomAnimals = []
+
 //keeps track of how many hints have been given
 let numberOfHintsGiven
 
@@ -133,7 +136,7 @@ function initializeNewGame() {
     scrambledWord = shuffleLetters(chosenWordLowerCase)
 
     //if scrambled word is the word itself, rescramble the word
-    if (chosenWordLowerCase == scrambledWord) {
+    if (chosenWordLowerCase == scrambledWord.split(" ").join("")) {
         scrambledWord = shuffleLetters(chosenWordLowerCase)
     }
 
@@ -156,10 +159,47 @@ function initializeNewGame() {
     startCountdown()
 }
 
-//gets a random word from our list of random words
+//gets a word from our random list
 function getRandomWord() {
-    const randomIndex = Math.floor(Math.random() * words.length)
-    return words[randomIndex].name
+
+    // if the randomAnimals array is empty, reshuffle a new list
+    if (randomAnimals.length === 0) {
+        prepareRandomAnimals()
+    }
+
+    // pull the next animal object off the deck
+    const nextAnimalObject = randomAnimals.pop()
+
+    // return just the name string of the animal object popped off the list
+    return nextAnimalObject.name
+
+    // const randomIndex = Math.floor(Math.random() * words.length)
+    // return words[randomIndex].name
+}
+
+// shuffle an array passed in
+function shuffleArray(array) {
+    // make a copy of the array
+    let shuffled = [...array]
+    // loop through the words of the array starting at the end
+    for (let i = shuffled.length-1; i > 0; i --) {
+        // let j be a random number between 0 and i inclusive
+        let j = Math.floor(Math.random() * (i+1))
+        //let temp be the ith element of shuffled
+        let temp = shuffled[i]
+        // change the ith element of shuffled to be the jth element of shuffled
+        shuffled[i] = shuffled[j]
+        // change the jth element of shuffled to be the original ith element of shuffled
+        shuffled[j] = temp
+    }
+    // return the fully shuffled array
+    return shuffled
+}
+
+// refill the randomAnimals array
+function prepareRandomAnimals() {
+    // shuffle the master words array and store it in randomAnimals
+    randomAnimals = shuffleArray(words)
 }
 
 //shuffles the letters of our chosen word
@@ -300,6 +340,8 @@ function clearHintsGivenList() {
 
 //calls a function every second and sets our intial timer value
 function startCountdown() {
+    // kill any existing timer loop
+    clearInterval(myTimer)
     //calls a countdownTimer every second
     myTimer = setInterval(countdownTimer, 1000)
     //initializes our timer to 30 seconds
@@ -337,8 +379,12 @@ function handleHintRequest() {
         hintPopUp.style.display = "block"
     //if we have given all out hints, 
     } else {
+        // stop the clock from ticking and overwriting text
+        clearInterval(myTimer)
         //change the timer text to "No more hints available"
         hintsTimer.textContent = "No more hints available"
+        // disable the button so users can't click it
+        getHintButton.disabled = true
     }
 }
 
@@ -346,7 +392,7 @@ function handleHintRequest() {
 function getHint() {
     numberOfHintsGiven += 1
     //find the animal that matches our current chosenWord
-    const result = words.find(animal => animal.name === chosenWord)
+    const result = words.find(animal => animal.name.toLowerCase() === chosenWordLowerCase)
     //construct a string to match the attribute name for the appropriate hint
     const tempString = `hint${numberOfHintsGiven}`
     //return appropriate hint
@@ -391,7 +437,7 @@ newWordButton.addEventListener("click", function() {
 //add eventListener to rescrambleWordButton and call two functions,
 rescrambleWordButton.addEventListener("click", function() {
     //create a temporary word to hold our newly shuffled word
-    let tempWord = shuffleLetters(scrambledWord)
+    let tempWord = shuffleLetters(chosenWordLowerCase)
     //call clearWordArea
     clearWordArea()
     //call buildWordArea using our temporary word
@@ -427,10 +473,35 @@ getHintButton.addEventListener("click", function() {
     clearInterval(myTimer)
 })
 
+// add eventListener to the enter button on the keyboard
+window.addEventListener("keydown", function (event) {
+    // check if the key pressed was the enter key
+    if (event.key === "Enter") {
+        // prevent default browser behavior
+        event.preventDefault()
+        // check if the victory popup is currently open
+        if (victoryPopUP.style.display === "block") {
+            // click the victory restart button instantly
+            victoryPopUpRestartButton.click()
+        // if the victory popup is not open, check if the hint pop up is up, if it is
+        } else if (hintPopUp.style.display === "block") {
+            // click the close hint button instantly
+            closeHintButton.click()
+        // if no popup window is open
+        } else {
+            // click guess button instantly
+            guessWordButton.click()
+        }
+    }
+})
 
 
 
 //start a new game on load
+
+//1. prepare the randomized animal list
+prepareRandomAnimals()
+//2. start the game loop
 initializeNewGame()
 
 
